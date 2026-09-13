@@ -66,3 +66,8 @@ already need to make.
 
 *Proofline is an open-source entry for the Agents for Humans Hackathon. The public demo uses only
 synthetic organization, award, receipt, and participant data.*
+
+**Read further:** [Proofline source code](https://github.com/vj68/proofline) ·
+[GAO nonprofit grant study](https://www.gao.gov/products/gao-10-477) ·
+[GAO grant-management observations](https://www.gao.gov/products/gao-23-106797) ·
+[Grants.gov post-award guidance](https://www.grants.gov/learn-grants/grants-101/post-award-phase)

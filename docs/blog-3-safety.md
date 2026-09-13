@@ -66,3 +66,7 @@ That shape lets an agent remove busywork without removing responsibility.
 
 *This post covers the design of Proofline, an open-source Agents for Humans Hackathon entry. Its
 public demonstration uses synthetic financial and participant data.*
+
+**Inspect the safeguards:** [Proofline source code](https://github.com/vj68/proofline) ·
+[architecture and trust boundaries](https://github.com/vj68/proofline/blob/main/docs/architecture.md) ·
+[evaluation scenarios](https://github.com/vj68/proofline/blob/main/scripts/evaluate.py)

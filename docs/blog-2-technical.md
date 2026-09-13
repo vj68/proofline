@@ -74,3 +74,7 @@ specific demonstration falsifiable.
 
 *Proofline is an MIT-licensed Agents for Humans Hackathon project built with Strands Agents SDK,
 Amazon Bedrock, and Amazon Bedrock AgentCore.*
+
+**Explore the implementation:** [Proofline source code](https://github.com/vj68/proofline) ·
+[Strands Agents SDK](https://strandsagents.com/) ·
+[Amazon Bedrock AgentCore Runtime](https://docs.aws.amazon.com/bedrock-agentcore/latest/devguide/runtime-get-started-cli.html)
