@@ -1,5 +1,11 @@
 const awardId = "CYA-2026-017";
 const $ = (selector) => document.querySelector(selector);
+const sessionKey = "proofline-demo-session";
+let sessionId = sessionStorage.getItem(sessionKey);
+if (!sessionId) {
+  sessionId = globalThis.crypto?.randomUUID?.() || `proofline-${Date.now()}-${Math.random().toString(16).slice(2)}`;
+  sessionStorage.setItem(sessionKey, sessionId);
+}
 
 const els = {
   run: $("#runButton"), reset: $("#resetButton"), empty: $("#emptyState"), review: $("#reviewLayout"),
@@ -20,7 +26,10 @@ function showToast(message) {
 }
 
 async function api(path, options = {}) {
-  const response = await fetch(path, {headers: {"Content-Type": "application/json"}, ...options});
+  const response = await fetch(path, {
+    ...options,
+    headers: {"Content-Type": "application/json", "X-Proofline-Session": sessionId, ...(options.headers || {})}
+  });
   if (!response.ok) {
     const body = await response.json().catch(() => ({}));
     throw new Error(body.detail || `Request failed (${response.status})`);

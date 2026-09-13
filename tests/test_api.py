@@ -47,3 +47,14 @@ def test_health_discloses_authority_boundary() -> None:
     assert health["status"] == "ok"
     assert health["agent"]["framework"] == "Strands Agents SDK"
     assert health["agent"]["external_submission"] == "not permitted"
+
+
+def test_public_browser_sessions_are_isolated() -> None:
+    session_a = {"X-Proofline-Session": "judge-a"}
+    session_b = {"X-Proofline-Session": "judge-b"}
+    client.post("/api/reset", headers=session_a)
+    client.post("/api/reset", headers=session_b)
+
+    assert client.post("/api/audits/CYA-2026-017/run", headers=session_a).status_code == 200
+    assert client.get("/api/state", headers=session_a).json()["status"] == "blocked"
+    assert client.get("/api/state", headers=session_b).json()["status"] == "ready"
