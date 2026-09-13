@@ -1,5 +1,6 @@
 from decimal import Decimal
 
+from proofline.agentcore_client import _hydrate_store
 from proofline.models import AuditStatus, EvidenceStatus, FindingCode
 from proofline.store import GrantStore
 from proofline.verifier import IntegrityVerifier
@@ -75,3 +76,24 @@ def test_evidence_drift_reopens_verified_report() -> None:
     findings = IntegrityVerifier(grant_store).scan()
     assert len(findings) == 1
     assert findings[0].code == FindingCode.UNSUPPORTED_CLAIM
+
+
+def test_agentcore_result_hydrates_console_state() -> None:
+    remote_store = GrantStore()
+    remote_run = DeterministicWorkflow(remote_store).audit()
+    local_store = GrantStore()
+
+    run = _hydrate_store(
+        local_store,
+        {
+            "audit": remote_run.model_dump(mode="json"),
+            "decision": remote_store.decision.model_dump(mode="json"),
+            "packet_ready": False,
+        },
+    )
+
+    assert run.agent_mode == "agentcore"
+    assert local_store.agent_mode == "agentcore"
+    assert local_store.status == AuditStatus.BLOCKED
+    assert local_store.decision is not None
+    assert len(local_store.findings) == 4

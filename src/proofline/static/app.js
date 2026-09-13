@@ -79,7 +79,7 @@ function render(state) {
   els.blockerMetric.textContent = state.status === "ready" ? "—" : state.metrics.unsupported_material_claims;
   els.evidenceMetric.textContent = state.metrics.evidence_files;
   els.coverageMetric.textContent = `${state.metrics.requirements_covered} / ${state.metrics.total_requirements}`;
-  els.agentMode.textContent = state.agent_mode === "strands" ? "LIVE BEDROCK LOOP" : "DETERMINISTIC TWIN";
+  els.agentMode.textContent = state.agent_mode === "agentcore" ? "LIVE AGENTCORE LOOP" : state.agent_mode === "strands" ? "LIVE BEDROCK LOOP" : "DETERMINISTIC TWIN";
   els.run.disabled = started;
   els.run.querySelector("span").textContent = state.status === "ready" ? "Run evidence audit" : state.status === "verified" ? "Audit complete" : "Audit paused for review";
   renderEvidence(state); renderFindings(state); renderDecision(state); renderTrail(state);

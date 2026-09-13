@@ -1,0 +1,40 @@
+{
+  "$schema": "https://schema.agentcore.aws.dev/v1/agentcore.json",
+  "name": "Proofline",
+  "version": 1,
+  "managedBy": "CDK",
+  "tags": {
+    "agentcore:created-by": "agentcore-cli",
+    "agentcore:project-name": "Proofline",
+    "project": "proofline",
+    "hackathon": "agents-for-humans"
+  },
+  "runtimes": [
+    {
+      "name": "ProoflineAgent",
+      "build": "CodeZip",
+      "entrypoint": "src/proofline/agentcore_app.py",
+      "codeLocation": ".",
+      "runtimeVersion": "PYTHON_3_14",
+      "networkMode": "PUBLIC",
+      "protocol": "HTTP",
+      "environmentVariables": {
+        "AWS_REGION": "us-west-2",
+        "BEDROCK_MODEL_ID": "amazon.nova-lite-v1:0"
+      }
+    }
+  ],
+  "memories": [],
+  "knowledgeBases": [],
+  "credentials": [],
+  "evaluators": [],
+  "onlineEvalConfigs": [],
+  "agentCoreGateways": [],
+  "policyEngines": [],
+  "configBundles": [],
+  "abTests": [],
+  "harnesses": [],
+  "datasets": [],
+  "capacityProviders": [],
+  "payments": []
+}

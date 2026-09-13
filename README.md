@@ -19,6 +19,9 @@ program logs.
 
 - [GAO reports](https://www.gao.gov/products/gao-23-106797) that burdensome grant-management
   requirements consume recipient capacity and can make programs less cost effective.
+- In a focused [GAO nonprofit study](https://www.gao.gov/products/gao-10-477), more than half of
+  participating nonprofits said administrative reporting made their grants challenging to manage;
+  three said administrative cost deterred them from seeking or renewing government grants.
 - [Grants.gov](https://www.grants.gov/learn-grants/grants-101/post-award-phase) calls post-award
   implementation, reporting, and closeout a significant continuing workload, with requirements
   and schedules that vary by grant.
@@ -86,6 +89,14 @@ export BEDROCK_MODEL_ID=amazon.nova-lite-v1:0
 uv run uvicorn proofline.main:app --reload
 ```
 
+After deploying the included AgentCore runtime, the console can call the managed runtime directly:
+
+```bash
+export PROOFLINE_AGENT_MODE=agentcore
+export AGENTCORE_RUNTIME_ARN=arn:aws:bedrock-agentcore:REGION:ACCOUNT:runtime/NAME
+uv run uvicorn proofline.main:app --reload
+```
+
 The AWS profile name is only a local convenience. No credentials or account identifiers are
 committed.
 
@@ -102,6 +113,8 @@ that all four seeded error classes are found, clean evidence verifies, blocked e
 emits a packet, and no scenario performs an external submission.
 
 ## Architecture
+
+![Proofline architecture: Strands and Bedrock investigation with deterministic verification and a human-only correction boundary](docs/architecture.png)
 
 ```mermaid
 flowchart LR
@@ -135,6 +148,28 @@ See [docs/architecture.md](docs/architecture.md) for trust boundaries and compon
 The agent has no external-submission tool and no tool that can approve the pending correction.
 Human approval enters through a separate application endpoint and is bound to decision
 `DEC-001`. Packet rendering fails closed unless the latest deterministic status is `verified`.
+
+## AgentCore deployment
+
+The repository includes a validated Amazon Bedrock AgentCore Runtime definition and a dedicated
+entry point at [`src/proofline/agentcore_app.py`](src/proofline/agentcore_app.py). Each runtime
+invocation creates an isolated scenario store, launches the same five-tool Strands audit, and
+returns its typed findings and bounded decision. AgentCore provides the managed execution surface;
+the web console remains the human authorization surface.
+
+```bash
+export PATH="/opt/homebrew/opt/node/bin:$PATH"  # only if Homebrew Node is not already first
+export AWS_PROFILE=your-profile
+agentcore validate -d .
+agentcore package -d . -r ProoflineAgent
+agentcore deploy -y
+agentcore invoke --runtime ProoflineAgent \
+  "Audit CYA-2026-017 and stop at the first authorized human decision."
+```
+
+AgentCore CLI requires Node.js 20 or later and AWS CDK. The deployment configuration lives in
+[`agentcore/agentcore.json`](agentcore/agentcore.json); local target/account state and deployment
+archives are not committed.
 
 ## Synthetic evidence fixtures
 

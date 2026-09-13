@@ -1,0 +1,8 @@
+.env.local
+cdk/cdk.out/
+cdk/node_modules/
+.cli/*
+.cache/*
+*.zip
+ProoflineAgent/
+!.cli/deployed-state.json

@@ -7,7 +7,9 @@ requires-python = ">=3.12"
 license = { text = "MIT" }
 authors = [{ name = "kermit" }]
 dependencies = [
+  "aws-opentelemetry-distro>=0.18.0",
   "awscrt>=0.28.0",
+  "bedrock-agentcore>=1.9.1",
   "boto3>=1.40.0",
   "fastapi>=0.116.0",
   "mangum>=0.19.0",

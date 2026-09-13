@@ -16,9 +16,11 @@ Good Neighbor Agents
 
 Small nonprofits win funding to serve people, then lose scarce staff capacity proving what they
 did. Grant requirements, receipts, financial exports, attendance logs, and narrative claims live
-in different places. GAO has repeatedly documented the burden of post-award grant management, and
-a recent nonprofit worker described a quarterly report that included a duplicate receipt and an
-expense for an activity that had not happened yet.
+in different places. In one GAO study, more than half of participating nonprofits said
+administrative reporting made their grants challenging to manage; three said the administrative
+cost discouraged them from seeking or renewing government grants. A recent nonprofit worker also
+described a quarterly report that included a duplicate receipt and an expense for an activity that
+had not happened yet.
 
 Most grant AI helps organizations find or write grants. We focused on the less glamorous moment
 after the award: before a report leaves the organization, can every material claim be defended?
@@ -82,3 +84,10 @@ is a decision.
 The organization, award, receipts, and participant IDs in the public demo are synthetic. Public
 GAO and Grants.gov material supports the problem statement and workflow design. No real PII,
 financial records, or confidential grant documents are used.
+
+## Evidence links
+
+- [GAO: Nonprofit Sector—Treatment and Reimbursement of Indirect Costs Vary among Grants](https://www.gao.gov/products/gao-10-477)
+- [GAO: Grants Management—Observations on Challenges with Access, Use, and Oversight](https://www.gao.gov/products/gao-23-106797)
+- [Grants.gov: Post-Award Phase](https://www.grants.gov/learn-grants/grants-101/post-award-phase)
+- [Practitioner account: Grant management](https://www.reddit.com/r/nonprofit/comments/1tzu2oz/grant_management/)

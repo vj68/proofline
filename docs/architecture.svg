@@ -1,0 +1,111 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="920" viewBox="0 0 1600 920" role="img" aria-labelledby="title desc">
+  <title id="title">Proofline grant-report integrity agent architecture</title>
+  <desc id="desc">A nonprofit reviewer and evidence event enter a FastAPI console. A Strands agent on Amazon Bedrock AgentCore uses Amazon Nova and five bounded tools. A deterministic verifier checks source evidence and either requests one human correction or produces a verified packet. The agent cannot approve or submit.</desc>
+  <defs>
+    <linearGradient id="page" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#fffaf0"/>
+      <stop offset="1" stop-color="#f2eadc"/>
+    </linearGradient>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="8" stdDeviation="10" flood-color="#352a20" flood-opacity="0.12"/>
+    </filter>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto">
+      <path d="M0 0 L10 5 L0 10 Z" fill="#5a5048"/>
+    </marker>
+    <marker id="arrowOrange" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto">
+      <path d="M0 0 L10 5 L0 10 Z" fill="#d85d2a"/>
+    </marker>
+    <style>
+      .title{font:700 46px ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;fill:#231f1a}
+      .subtitle{font:400 21px ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;fill:#635a52}
+      .kicker{font:700 15px ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;letter-spacing:2px;fill:#d85d2a}
+      .label{font:700 22px ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;fill:#231f1a}
+      .body{font:400 17px ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;fill:#5b5149}
+      .small{font:600 15px ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;fill:#5b5149}
+      .tiny{font:500 14px ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;fill:#71675f}
+      .white{fill:#fff}
+      .line{fill:none;stroke:#5a5048;stroke-width:3;marker-end:url(#arrow)}
+      .orangeLine{fill:none;stroke:#d85d2a;stroke-width:3;marker-end:url(#arrowOrange)}
+      .dash{stroke-dasharray:9 8}
+    </style>
+  </defs>
+
+  <rect width="1600" height="920" fill="url(#page)"/>
+  <text x="80" y="78" class="kicker">PROOFLINE · GOOD NEIGHBOR AGENT</text>
+  <text x="80" y="132" class="title">Every claim passes through evidence.</text>
+  <text x="80" y="168" class="subtitle">A Strands agent investigates; deterministic policy controls readiness; a human controls corrections.</text>
+
+  <rect x="58" y="205" width="1484" height="620" rx="30" fill="#fffdfa" stroke="#ded4c5" stroke-width="2"/>
+
+  <rect x="90" y="260" width="245" height="156" rx="22" fill="#fff" stroke="#d7cec2" stroke-width="2" filter="url(#shadow)"/>
+  <circle cx="132" cy="307" r="22" fill="#ffe4d5"/>
+  <path d="M121 309h22M132 298v22" stroke="#d85d2a" stroke-width="4" stroke-linecap="round"/>
+  <text x="169" y="303" class="label">Nonprofit</text>
+  <text x="169" y="332" class="label">reviewer</text>
+  <text x="116" y="373" class="body">One bounded decision</text>
+  <text x="116" y="397" class="body">when evidence conflicts</text>
+
+  <rect x="90" y="500" width="245" height="156" rx="22" fill="#fff" stroke="#d7cec2" stroke-width="2" filter="url(#shadow)"/>
+  <rect x="112" y="527" width="43" height="50" rx="5" fill="#f2eadc" stroke="#947f6c" stroke-width="2"/>
+  <path d="M122 541h23M122 551h23M122 561h16" stroke="#947f6c" stroke-width="2"/>
+  <text x="170" y="545" class="label">Evidence</text>
+  <text x="170" y="574" class="label">arrival</text>
+  <text x="116" y="613" class="body">Award · receipts · CSVs</text>
+  <text x="116" y="637" class="body">or scheduled audit</text>
+
+  <rect x="425" y="300" width="280" height="304" rx="24" fill="#253932" stroke="#1c2c27" stroke-width="2" filter="url(#shadow)"/>
+  <text x="458" y="340" class="kicker">PRODUCT BOUNDARY</text>
+  <text x="458" y="382" class="label white">FastAPI console</text>
+  <text x="458" y="413" class="body white">Typed workflow API</text>
+  <line x1="458" y1="442" x2="672" y2="442" stroke="#62736d" stroke-width="2"/>
+  <text x="458" y="481" class="small white">• visible source evidence</text>
+  <text x="458" y="514" class="small white">• before / after findings</text>
+  <text x="458" y="547" class="small white">• append-only tool trail</text>
+  <text x="458" y="580" class="small white">• fail-closed packet route</text>
+
+  <rect x="795" y="238" width="435" height="322" rx="26" fill="#fff5ef" stroke="#e98a60" stroke-width="3" filter="url(#shadow)"/>
+  <text x="827" y="277" class="kicker">AWS AGENT RUNTIME</text>
+  <text x="827" y="318" class="label">Strands Agents SDK</text>
+  <text x="827" y="347" class="body">Autonomous investigation and sequencing</text>
+  <rect x="827" y="377" width="164" height="74" rx="14" fill="#232f3e"/>
+  <text x="849" y="408" class="small white">Amazon Bedrock</text>
+  <text x="849" y="432" class="tiny white">Nova Lite</text>
+  <rect x="1008" y="377" width="190" height="74" rx="14" fill="#ff9900"/>
+  <text x="1030" y="408" class="small" fill="#231f1a">AgentCore Runtime</text>
+  <text x="1030" y="432" class="tiny" fill="#231f1a">sessions + traces</text>
+  <text x="827" y="487" class="small">Five narrow tools · no arbitrary I/O</text>
+  <text x="827" y="519" class="small">No approve tool · no submit tool</text>
+
+  <rect x="795" y="625" width="435" height="142" rx="22" fill="#fff" stroke="#d7cec2" stroke-width="2" filter="url(#shadow)"/>
+  <text x="827" y="665" class="label">Deterministic verifier</text>
+  <text x="827" y="697" class="body">SHA-256 de-dupe · period boundaries · arithmetic</text>
+  <text x="827" y="726" class="body">unique participant IDs · evidence coverage · readiness</text>
+
+  <rect x="1320" y="275" width="175" height="176" rx="22" fill="#fff" stroke="#d7cec2" stroke-width="2" filter="url(#shadow)"/>
+  <text x="1348" y="318" class="label">Blocked</text>
+  <text x="1348" y="352" class="body">One correction</text>
+  <text x="1348" y="377" class="body">card surfaces</text>
+  <rect x="1347" y="400" width="120" height="31" rx="15" fill="#ffe4d5"/>
+  <text x="1370" y="421" class="small" fill="#a84019">HUMAN ONLY</text>
+
+  <rect x="1320" y="568" width="175" height="176" rx="22" fill="#e8f3ed" stroke="#83a792" stroke-width="2" filter="url(#shadow)"/>
+  <text x="1348" y="611" class="label">Verified</text>
+  <text x="1348" y="645" class="body">Cited review</text>
+  <text x="1348" y="670" class="body">packet ready</text>
+  <rect x="1347" y="696" width="120" height="31" rx="15" fill="#d3e7da"/>
+  <text x="1367" y="717" class="small" fill="#315e45">0 BLOCKERS</text>
+
+  <path d="M335 338 H425" class="line"/>
+  <path d="M335 578 H385 Q405 578 405 558 V485 Q405 465 425 465" class="line"/>
+  <path d="M705 400 H795" class="orangeLine"/>
+  <path d="M1013 560 V625" class="line"/>
+  <path d="M1230 682 H1290 Q1308 682 1308 664 V469 Q1308 451 1320 451" class="orangeLine"/>
+  <path d="M1320 363 H1265 Q1245 363 1245 383 V580 Q1245 600 1229 600" class="orangeLine dash"/>
+  <text x="1245" y="346" class="tiny">blockers</text>
+  <text x="1248" y="629" class="tiny">approved correction</text>
+  <path d="M1230 715 H1320" class="line"/>
+
+  <rect x="80" y="850" width="1440" height="44" rx="14" fill="#231f1a"/>
+  <text x="104" y="878" class="small white">INVARIANT</text>
+  <text x="225" y="878" class="body white">No packet becomes ready while a material claim lacks matching, in-period, non-duplicated evidence.</text>
+</svg>

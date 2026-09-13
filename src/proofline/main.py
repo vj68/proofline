@@ -8,6 +8,7 @@ from fastapi.responses import HTMLResponse, Response
 from fastapi.staticfiles import StaticFiles
 from mangum import Mangum
 
+from .agentcore_client import run_agentcore_audit
 from .models import AuditRun, AuditStatus, DashboardState, ResolutionRun, ResolveRequest
 from .packet import render_packet
 from .store import store
@@ -86,6 +87,8 @@ def run_audit(award_id: str) -> AuditRun:
             status_code=409, detail="Reset the scenario before starting another audit"
         )
     mode = os.getenv("PROOFLINE_AGENT_MODE", "deterministic").lower()
+    if mode == "agentcore":
+        return run_agentcore_audit(store)
     if mode == "strands":
         return run_strands_audit(store)
     store.agent_mode = "deterministic"
