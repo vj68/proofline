@@ -52,6 +52,20 @@ The included scenario follows a fictional youth nonprofit preparing one quarterl
 
 The original evidence and complete append-only tool trail remain visible throughout.
 
+## Product walkthrough
+
+### 1. A quiet, judge-ready starting point
+
+![Proofline ready to audit a quarterly grant report](docs/screenshots/ready.png)
+
+### 2. Four linked failures become one bounded decision
+
+![Proofline showing a duplicate receipt, out-of-period invoice, financial mismatch, and unsupported participant count](docs/screenshots/blocked.png)
+
+### 3. Human approval triggers a fresh, independent verification pass
+
+![Proofline showing all findings resolved and the evidence packet verified](docs/screenshots/verified.png)
+
 ## Why this needs an agent
 
 Grant language and evidence are heterogeneous. The Strands loop handles the judgment-heavy work:
@@ -83,7 +97,7 @@ and automated tests. To run the same audit through a live Strands agent backed b
 
 ```bash
 export PROOFLINE_AGENT_MODE=strands
-export AWS_PROFILE=rescuerelay
+export AWS_PROFILE=your-profile
 export AWS_REGION=us-west-2
 export BEDROCK_MODEL_ID=amazon.nova-lite-v1:0
 uv run uvicorn proofline.main:app --reload

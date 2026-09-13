@@ -91,7 +91,7 @@ els.run.addEventListener("click", async () => {
   els.run.disabled = true; els.run.querySelector("span").textContent = "Inspecting evidence…";
   try {
     await api(`/api/audits/${awardId}/run`, {method: "POST"}); await load();
-    $("#reviewLayout").scrollIntoView({behavior: "smooth", block: "start"});
+    $(".workspace").scrollIntoView({behavior: "smooth", block: "start"});
     showToast("Audit paused safely: one human decision is ready.");
   } catch (error) { showToast(error.message); els.run.disabled = false; }
 });

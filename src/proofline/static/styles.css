@@ -67,7 +67,7 @@ h1 em { color: var(--orange); font-style: normal; }
 .proof-status[data-status="blocked"] .status-orb span { background: var(--orange); box-shadow: 0 0 0 7px rgba(224,93,50,.12); }
 .proof-status[data-status="verified"] .status-orb { border-color: var(--green); }
 .proof-status[data-status="verified"] .status-orb span { background: var(--green); box-shadow: 0 0 0 7px rgba(23,116,74,.12); }
-.workspace { margin-top: 88px; }
+.workspace { margin-top: 88px; scroll-margin-top: 96px; }
 .workspace-head, .card-head { display: flex; justify-content: space-between; align-items: end; margin-bottom: 25px; }
 .workspace-head > div:first-child, .card-head > div:first-child { display: flex; align-items: baseline; gap: 14px; }
 .section-number { color: var(--orange); font-size: 10px; font-weight: 800; letter-spacing: 1px; }
