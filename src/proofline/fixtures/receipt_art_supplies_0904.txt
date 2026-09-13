@@ -1,0 +1,7 @@
+SYNTHETIC RECEIPT
+Vendor: North Harbor Art Supply
+Date: 2026-09-04
+Description: Workshop art materials
+Budget category: Program supplies
+Total: USD 480.00
+Transaction reference: NHAS-0904-7741

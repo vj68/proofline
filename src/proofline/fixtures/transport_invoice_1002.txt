@@ -1,0 +1,7 @@
+SYNTHETIC INVOICE
+Vendor: Harbor Community Transit
+Invoice date: 2026-10-02
+Description: Participant transport
+Budget category: Participant transport
+Total: USD 350.00
+Invoice reference: HCT-1002-1108

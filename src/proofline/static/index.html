@@ -1,0 +1,151 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Proofline verifies every material claim in a nonprofit grant report before human submission.">
+  <title>Proofline · Evidence before submission</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/static/styles.css">
+</head>
+<body>
+  <div class="grain" aria-hidden="true"></div>
+  <header class="topbar">
+    <a class="brand" href="/" aria-label="Proofline home">
+      <span class="brand-mark" aria-hidden="true"><span></span><span></span><span></span></span>
+      <span>Proofline</span>
+    </a>
+    <div class="top-meta">
+      <span class="live-dot"><i></i> Evidence monitor online</span>
+      <span class="separator"></span>
+      <span>Harbor Light Youth Collective</span>
+    </div>
+    <button class="icon-button" id="resetButton" title="Reset demo" aria-label="Reset demo">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 11a8.1 8.1 0 1 1-2.4-5.7L20 7.7M20 3v4.7h-4.7"/></svg>
+    </button>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="eyebrow"><span>Quarterly reporting</span><span class="slash">/</span><span>CYA-2026-017</span></div>
+      <div class="hero-grid">
+        <div>
+          <h1>Every claim needs<br><em>a line of proof.</em></h1>
+          <p class="lede">Proofline quietly reconciles grant terms, expenses, and program evidence—then asks for one decision only when the report cannot be defended as written.</p>
+        </div>
+        <div class="hero-action">
+          <div class="due-label">REPORT DUE</div>
+          <div class="due-date">15 Oct <span>2026</span></div>
+          <div class="due-context">Community Youth Access Grant<br>Jul 01–Sep 30 reporting period</div>
+          <button class="primary-button" id="runButton">
+            <span>Run evidence audit</span>
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg>
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <section class="proof-strip" aria-label="Audit summary">
+      <div class="proof-status" id="proofStatus" data-status="ready">
+        <div class="status-orb"><span></span></div>
+        <div><small>REPORT INTEGRITY</small><strong id="statusTitle">Ready to audit</strong></div>
+      </div>
+      <div class="metric"><small>Unsupported claims</small><strong id="blockerMetric">—</strong></div>
+      <div class="metric"><small>Evidence files</small><strong id="evidenceMetric">5</strong></div>
+      <div class="metric"><small>Requirements covered</small><strong id="coverageMetric">0 / 3</strong></div>
+      <div class="metric last"><small>External submission</small><strong class="never">Human only</strong></div>
+    </section>
+
+    <section class="workspace">
+      <div class="workspace-head">
+        <div>
+          <span class="section-number">01</span>
+          <h2>Integrity review</h2>
+        </div>
+        <div class="mode-pill"><span>STRANDS</span><b id="agentMode">DETERMINISTIC TWIN</b></div>
+      </div>
+
+      <div class="empty-state" id="emptyState">
+        <div class="scan-illustration" aria-hidden="true">
+          <div class="doc doc-back"></div><div class="doc doc-front"><i></i><i></i><i></i></div><div class="scan-line"></div>
+        </div>
+        <h3>Five files are waiting in the evidence inbox.</h3>
+        <p>The agent will map award obligations, hash every artifact, reconcile report claims, and remain silent unless a material decision is required.</p>
+      </div>
+
+      <div class="review-layout hidden" id="reviewLayout">
+        <div class="findings-panel">
+          <div class="panel-label"><span id="findingsLabel">Blocking findings</span><span id="findingCount">0</span></div>
+          <div id="findingsList"></div>
+        </div>
+        <aside class="decision-card hidden" id="decisionCard">
+          <div class="decision-kicker"><span></span> ONE DECISION NEEDED</div>
+          <h3 id="decisionTitle"></h3>
+          <p id="decisionSummary"></p>
+          <div class="recommendation">
+            <small>AGENT RECOMMENDATION</small>
+            <p id="decisionRecommendation"></p>
+          </div>
+          <ul id="decisionConsequences"></ul>
+          <button class="approve-button" id="approveButton">
+            <span id="approveLabel">Approve & re-verify</span>
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m5 12 4 4L19 6"/></svg>
+          </button>
+          <button class="text-button" id="keepBlockedButton">Keep report blocked</button>
+          <p class="authority-note">The agent cannot approve its own correction.</p>
+        </aside>
+        <aside class="verified-card hidden" id="verifiedCard">
+          <div class="verified-seal">
+            <svg viewBox="0 0 52 52" aria-hidden="true"><circle cx="26" cy="26" r="23"/><path d="m15 27 7 7 15-17"/></svg>
+          </div>
+          <div class="decision-kicker green">INDEPENDENTLY VERIFIED</div>
+          <h3>Zero unsupported material claims.</h3>
+          <p>Every reported figure is now traceable to included evidence. Original exclusions remain visible in the audit trail.</p>
+          <dl>
+            <div><dt>Eligible expenses</dt><dd>$480.00</dd></div>
+            <div><dt>Unique youth</dt><dd>92</dd></div>
+            <div><dt>Requirements</dt><dd>3 / 3</dd></div>
+          </dl>
+          <a class="download-button" id="downloadPacket" href="/api/reports/CYA-2026-017/packet" target="_blank" rel="noopener">
+            <span>Open verified packet</span>
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v12m0 0 5-5m-5 5-5-5M5 21h14"/></svg>
+          </a>
+          <p class="authority-note">Ready for authorized human review. Not submitted.</p>
+        </aside>
+      </div>
+    </section>
+
+    <section class="details-grid">
+      <div class="detail-card evidence-card">
+        <div class="card-head"><div><span class="section-number">02</span><h2>Evidence manifest</h2></div><span id="manifestCount">5 artifacts</span></div>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>Artifact</th><th>Type</th><th>Reported value</th><th>Date</th><th>Status</th></tr></thead>
+            <tbody id="evidenceTable"></tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="detail-card trail-card">
+        <div class="card-head"><div><span class="section-number">03</span><h2>Agent trail</h2></div><span>Append-only</span></div>
+        <div class="trail-empty" id="trailEmpty">The tool trail will appear when the audit begins.</div>
+        <ol class="trail" id="eventTrail"></ol>
+      </div>
+    </section>
+
+    <section class="trust-boundary">
+      <span class="section-number">04</span>
+      <div><h2>Reasoning proposes.<br>Evidence decides.</h2></div>
+      <div class="boundary-copy">
+        <p>Strands interprets the award and orchestrates the investigation. Deterministic checks own hashes, dates, arithmetic, claim coverage, and the final verification gate.</p>
+        <div class="boundary-tags"><span>Model</span><i>→</i><span>Tools</span><i>→</i><span>Policy gate</span><i>→</i><span>Human authority</span></div>
+      </div>
+    </section>
+  </main>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  <script src="/static/app.js"></script>
+</body>
+</html>
