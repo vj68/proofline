@@ -2,6 +2,8 @@
 
 **Every grant-report claim, traced before submission.**
 
+![Proofline connects grant-report claims to source evidence before human submission](docs/assets/proofline-cover.png)
+
 Proofline is a background grant-report integrity agent for small nonprofits. It maps award
 obligations, reconciles receipts and program logs, catches unsupported or duplicated claims,
 and surfaces one bounded human decision. A report packet is produced only after independent
