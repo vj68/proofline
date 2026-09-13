@@ -80,7 +80,7 @@ text enough for mobile judging, and let the live status changes carry the techni
 > The experience is a FastAPI web app. The reasoning loop uses Strands Agents SDK and Amazon Nova
 > on Bedrock, deployed to AgentCore Runtime for managed sessions and traces. Five narrow tools sit
 > between the agent and a deterministic integrity verifier. The public repository includes the
-> source fixtures, typed contracts, nine tests, and four-scenario evaluation.
+> source fixtures, typed contracts, ten tests, and four-scenario evaluation.
 
 ## 3:55–4:20 — Close
 
@@ -96,7 +96,7 @@ text enough for mobile judging, and let the live status changes carry the techni
 
 - Keep the final upload below five minutes and public on YouTube or Vimeo.
 - Show the live URL in the address bar once.
-- Capture the runtime badge saying `LIVE BEDROCK LOOP`.
+- Capture the runtime badge saying `LIVE AGENTCORE LOOP`.
 - Do not expose the AWS account number, console identity, or credentials.
 - Use the synthetic-data disclosure on screen or in the video description.
 - End on a verified state with the packet link visible.

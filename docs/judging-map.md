@@ -5,7 +5,7 @@ tie-breaker. This map keeps every claim visible in the product, video, or reposi
 
 | Criterion | Proof in the submission | Remaining finish line |
 |---|---|---|
-| Technical Implementation | Real `strands.Agent`, Amazon Bedrock model, five bounded tools, deterministic authority boundary, 9 tests, 4-scenario evaluation, container | Capture live invocation and AgentCore deployment evidence |
+| Technical Implementation | Real `strands.Agent`, Amazon Bedrock model, five bounded tools, deterministic authority boundary, 10 tests, 4-scenario evaluation, container | Capture live invocation and AgentCore deployment evidence |
 | Design | Coherent audit → one decision → fresh verification → packet workflow; responsive console; visible provenance | Final cross-browser and mobile recording check |
 | Potential Impact | GAO and Grants.gov evidence; specific small-nonprofit reviewer; exact workload and failure classes | Keep evidence citations in pitch and post |
 | Creativity & Originality | Post-award claim integrity rather than grant search/writing; model proposes while evidence controls truth | Make this contrast explicit in opening minute |
