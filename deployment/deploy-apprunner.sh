@@ -130,12 +130,20 @@ if [[ "$service_arn" == "None" ]]; then
     --query Service.ServiceArn \
     --output text)"
 else
-  aws apprunner update-service \
+  update_result="$(aws apprunner update-service \
     --profile "$AWS_PROFILE" \
     --region "$deployment_region" \
     --service-arn "$service_arn" \
     --source-configuration "$source_configuration" \
-    --instance-configuration "Cpu=1 vCPU,Memory=2 GB,InstanceRoleArn=${instance_role_arn}" >/dev/null
+    --instance-configuration "Cpu=1 vCPU,Memory=2 GB,InstanceRoleArn=${instance_role_arn}")"
+  # App Runner does not create an update operation when only the digest behind
+  # an unchanged :latest image tag changes. Explicitly deploy that new digest.
+  if [[ "$(jq -r '.OperationId // empty' <<<"$update_result")" == "" ]]; then
+    aws apprunner start-deployment \
+      --profile "$AWS_PROFILE" \
+      --region "$deployment_region" \
+      --service-arn "$service_arn" >/dev/null
+  fi
 fi
 
 for attempt in {1..60}; do
