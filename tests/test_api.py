@@ -58,3 +58,32 @@ def test_public_browser_sessions_are_isolated() -> None:
     assert client.post("/api/audits/CYA-2026-017/run", headers=session_a).status_code == 200
     assert client.get("/api/state", headers=session_a).json()["status"] == "blocked"
     assert client.get("/api/state", headers=session_b).json()["status"] == "ready"
+
+
+def test_user_can_enter_claims_and_register_evidence() -> None:
+    session = {"X-Proofline-Session": "intake-user"}
+    client.post("/api/reset", headers=session)
+
+    claims = client.patch(
+        "/api/reports/CYA-2026-017/claims",
+        headers=session,
+        json={"eligible_expenses": 975.5, "people_served": 76},
+    )
+    assert claims.status_code == 200
+    assert claims.json()["claims"][0]["claimed_value"] == 975.5
+    assert claims.json()["claims"][1]["claimed_value"] == 76
+
+    uploaded = client.post(
+        "/api/reports/CYA-2026-017/evidence",
+        headers=session,
+        json={
+            "filename": "program-summary.pdf",
+            "kind": "pdf",
+            "captured_on": "2026-09-14",
+            "sha256": "a" * 64,
+            "size_bytes": 4200,
+        },
+    )
+    assert uploaded.status_code == 200
+    assert uploaded.json()["filename"] == "program-summary.pdf"
+    assert len(client.get("/api/state", headers=session).json()["evidence"]) == 6

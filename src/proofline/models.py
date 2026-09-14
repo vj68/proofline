@@ -134,6 +134,19 @@ class ResolveRequest(BaseModel):
     approve: bool
 
 
+class UpdateClaimsRequest(BaseModel):
+    eligible_expenses: float = Field(ge=0)
+    people_served: int = Field(ge=0)
+
+
+class EvidenceUploadRequest(BaseModel):
+    filename: str = Field(min_length=1, max_length=255)
+    kind: str = Field(default="supporting_document", max_length=64)
+    captured_on: date
+    sha256: str = Field(min_length=64, max_length=64)
+    size_bytes: int = Field(default=0, ge=0)
+
+
 class ResolutionRun(BaseModel):
     status: AuditStatus
     outcome: str

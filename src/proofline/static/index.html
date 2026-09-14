@@ -3,150 +3,72 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Proofline verifies every material claim in a nonprofit grant report before human submission.">
-  <title>Proofline · Evidence before submission</title>
+  <meta name="description" content="Proofline is the evidence operations workspace for grant reporting teams.">
+  <title>Proofline · Grant evidence operations</title>
   <link rel="icon" type="image/svg+xml" href="/static/favicon.svg">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@500;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="/static/styles.css?v=2">
+  <link rel="stylesheet" href="/static/styles.css?v=3">
 </head>
 <body>
-  <div class="grain" aria-hidden="true"></div>
-  <header class="topbar">
-    <a class="brand" href="/" aria-label="Proofline home">
-      <span class="brand-mark" aria-hidden="true"><span></span><span></span><span></span></span>
-      <span>Proofline</span>
-    </a>
-    <div class="top-meta">
-      <span class="live-dot"><i></i> Evidence monitor online</span>
-      <span class="separator"></span>
-      <span>Harbor Light Youth Collective</span>
+  <div class="app-shell">
+    <aside class="sidebar" id="sidebar">
+      <a class="brand" href="#dashboard" data-route="dashboard" aria-label="Proofline dashboard"><span class="brand-mark" aria-hidden="true"><span></span><span></span><span></span></span><span>Proofline</span></a>
+      <button class="org-switcher" type="button" aria-label="Current organization"><span class="org-avatar">HL</span><span><strong>Harbor Light</strong><small>Youth Collective</small></span><svg viewBox="0 0 24 24"><path d="m8 10 4-4 4 4M8 14l4 4 4-4"/></svg></button>
+      <nav class="primary-nav" aria-label="Main navigation">
+        <p>Workspace</p>
+        <a href="#dashboard" data-route="dashboard" class="active"><svg viewBox="0 0 24 24"><path d="M4 13h6V4H4v9Zm10 7h6V11h-6v9ZM4 20h6v-3H4v3Zm10-13h6V4h-6v3Z"/></svg><span>Dashboard</span></a>
+        <a href="#reports" data-route="reports"><svg viewBox="0 0 24 24"><path d="M6 3h9l4 4v14H6V3Zm8 1v4h4M9 12h7M9 16h7"/></svg><span>Reports</span><b id="reportNavCount">4</b></a>
+        <a href="#evidence" data-route="evidence"><svg viewBox="0 0 24 24"><path d="M4 7h6l2 2h8v10H4V7Zm3-3h5l2 2h6"/></svg><span>Evidence</span></a>
+        <a href="#decisions" data-route="decisions"><svg viewBox="0 0 24 24"><path d="M12 22a10 10 0 1 0 0-20 10 10 0 0 0 0 20Zm0-14v5m0 4h.01"/></svg><span>Decisions</span><b class="attention-count" id="decisionNavCount">1</b></a>
+        <a href="#analytics" data-route="analytics"><svg viewBox="0 0 24 24"><path d="M4 20V10m6 10V4m6 16v-7m4 7H2"/></svg><span>Analytics</span></a>
+        <p>Admin</p>
+        <a href="#integrations" data-route="integrations"><svg viewBox="0 0 24 24"><path d="M8 12h8m-4-4v8M7 3v4M17 3v4M7 17v4m10-4v4M3 7h18v10H3V7Z"/></svg><span>Integrations</span></a>
+        <a href="#settings" data-route="settings"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.7 1.7 0 0 0 .34 1.88l.06.06-2.83 2.83-.06-.06a1.7 1.7 0 0 0-1.88-.34 1.7 1.7 0 0 0-1.03 1.56V21h-4v-.09A1.7 1.7 0 0 0 9 19.37a1.7 1.7 0 0 0-1.88.34l-.06.06-2.83-2.83.06-.06A1.7 1.7 0 0 0 4.63 15 1.7 1.7 0 0 0 3.09 14H3v-4h.09A1.7 1.7 0 0 0 4.63 9a1.7 1.7 0 0 0-.34-1.88l-.06-.06 2.83-2.83.06.06A1.7 1.7 0 0 0 9 4.63 1.7 1.7 0 0 0 10 3.09V3h4v.09A1.7 1.7 0 0 0 15 4.63a1.7 1.7 0 0 0 1.88-.34l.06-.06 2.83 2.83-.06.06A1.7 1.7 0 0 0 19.37 9 1.7 1.7 0 0 0 20.91 10H21v4h-.09A1.7 1.7 0 0 0 19.4 15Z"/></svg><span>Policies & settings</span></a>
+      </nav>
+      <div class="sidebar-footer"><div class="agent-health"><i></i><span><strong>Evidence agent</strong><small>Monitoring 8 awards</small></span></div><button class="user-card" type="button"><span class="user-avatar">MC</span><span><strong>Maya Chen</strong><small>Grants manager</small></span><svg viewBox="0 0 24 24"><circle cx="5" cy="12" r="1"/><circle cx="12" cy="12" r="1"/><circle cx="19" cy="12" r="1"/></svg></button></div>
+    </aside>
+
+    <div class="app-main">
+      <header class="topbar"><button class="mobile-menu" id="mobileMenu" aria-label="Open navigation"><svg viewBox="0 0 24 24"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button><div class="breadcrumbs" id="breadcrumbs"><span>Workspace</span><i>/</i><strong>Dashboard</strong></div><div class="top-actions"><label class="search"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="m20 20-4-4"/></svg><input type="search" placeholder="Search reports and evidence"><kbd>⌘ K</kbd></label><button class="top-icon" aria-label="Notifications"><svg viewBox="0 0 24 24"><path d="M18 8a6 6 0 0 0-12 0c0 7-3 7-3 9h18c0-2-3-2-3-9Zm-8 12h4"/></svg><i></i></button><button class="top-icon" aria-label="Help"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M9.7 9a2.5 2.5 0 1 1 3.1 2.4c-.8.3-.8.8-.8 1.6m0 3h.01"/></svg></button></div></header>
+      <main class="page-container">
+        <section class="page active" id="page-dashboard" data-page="dashboard">
+          <div class="page-heading dashboard-heading"><div><p class="eyebrow">Monday, September 14</p><h1>Good afternoon, Maya.</h1><p>Here’s what needs attention across your reporting portfolio.</p></div><button class="primary-button" data-open-intake><svg viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg>New report</button></div>
+          <div class="metric-grid"><article class="metric-card"><span class="metric-icon green"><svg viewBox="0 0 24 24"><path d="M5 5h14v14H5V5Zm3 4h8m-8 4h5"/></svg></span><div><small>Active awards</small><strong id="activeAwardMetric">8</strong><p>$486k under management</p></div></article><article class="metric-card"><span class="metric-icon blue"><svg viewBox="0 0 24 24"><path d="M6 3v3m12-3v3M4 9h16M5 5h14v16H5V5Z"/></svg></span><div><small>Reports due</small><strong id="reportsDueMetric">4</strong><p>Next 45 days</p></div></article><article class="metric-card"><span class="metric-icon amber"><svg viewBox="0 0 24 24"><path d="M12 22a10 10 0 1 0 0-20 10 10 0 0 0 0 20Zm0-14v5m0 4h.01"/></svg></span><div><small>Needs attention</small><strong id="attentionMetric">1</strong><p>Human decision required</p></div></article><article class="metric-card"><span class="metric-icon violet"><svg viewBox="0 0 24 24"><path d="m5 12 4 4L19 6"/></svg></span><div><small>Evidence coverage</small><strong>84%</strong><p><span class="positive">↑ 11%</span> this quarter</p></div></article></div>
+          <div class="dashboard-grid"><article class="surface deadlines-panel"><div class="surface-head"><div><h2>Upcoming reports</h2><p>Ordered by urgency and evidence risk</p></div><button class="text-link" data-route="reports">View all</button></div><div class="report-table" id="dashboardReports"></div></article><article class="surface activity-panel"><div class="surface-head"><div><h2>Recent activity</h2><p>Across your organization</p></div><button class="filter-button">All activity <svg viewBox="0 0 24 24"><path d="m8 10 4 4 4-4"/></svg></button></div><div class="activity-list"><div class="activity-item"><span class="activity-avatar bot">P</span><div><p><strong>Proofline verified</strong> the Safe Routes Q2 packet</p><small>8 minutes ago</small></div></div><div class="activity-item"><span class="activity-avatar">JO</span><div><p><strong>Jordan uploaded</strong> 6 attendance records</p><small>38 minutes ago · Digital Skills Fund</small></div></div><div class="activity-item"><span class="activity-avatar alert">!</span><div><p><strong>One decision requested</strong> for Community Youth Access</p><small>Yesterday at 4:42 PM</small></div></div><div class="activity-item"><span class="activity-avatar">AR</span><div><p><strong>Amara connected</strong> QuickBooks Online</p><small>Yesterday at 11:16 AM</small></div></div><div class="activity-item"><span class="activity-avatar bot">P</span><div><p><strong>Proofline matched</strong> 14 transactions to evidence</p><small>September 12 · Food Security Initiative</small></div></div></div></article></div>
+          <article class="surface coverage-panel"><div class="surface-head"><div><h2>Portfolio evidence coverage</h2><p>Requirements with defensible supporting evidence</p></div><span class="period-chip">This quarter</span></div><div class="coverage-chart"><div class="chart-scale"><span>100%</span><span>75%</span><span>50%</span><span>25%</span><span>0%</span></div><div class="bars"><div><span style="--height:92%"></span><small>Safe Routes</small></div><div><span style="--height:84%"></span><small>Youth Access</small></div><div><span style="--height:78%"></span><small>Digital Skills</small></div><div><span style="--height:65%"></span><small>Food Security</small></div><div><span style="--height:53%"></span><small>Arts Recovery</small></div></div></div></article>
+        </section>
+
+        <section class="page" id="page-reports" data-page="reports"><div class="page-heading"><div><p class="eyebrow">Reporting operations</p><h1>Reports</h1><p>Create, prepare, verify, and hand off every funder report.</p></div><button class="primary-button" data-open-intake><svg viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg>New report</button></div><article class="surface"><div class="list-toolbar"><div class="segmented"><button class="active">All</button><button>Needs attention</button><button>In progress</button><button>Verified</button></div><div class="toolbar-actions"><button class="secondary-button"><svg viewBox="0 0 24 24"><path d="M4 6h16M7 12h10m-7 6h4"/></svg>Filter</button><label class="compact-search"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="m20 20-4-4"/></svg><input id="reportSearch" placeholder="Search reports"></label></div></div><div class="data-table-wrap"><table class="data-table"><thead><tr><th>Report</th><th>Funder</th><th>Reporting period</th><th>Coverage</th><th>Due</th><th>Status</th><th></th></tr></thead><tbody id="allReportsTable"></tbody></table></div></article></section>
+
+        <section class="page" id="page-report" data-page="report">
+          <button class="back-link" data-route="reports"><svg viewBox="0 0 24 24"><path d="m15 18-6-6 6-6"/></svg>All reports</button>
+          <div class="report-heading"><div><div class="title-line"><span class="status-pill preparing" id="reportStatusPill">Preparing</span><span class="report-id">CYA-2026-017</span></div><h1 id="reportTitle">Community Youth Access Grant</h1><p id="reportSubtitle">Quarterly performance report · Jul 1–Sep 30, 2026</p></div><div class="heading-actions"><button class="secondary-button" id="resetButton"><svg viewBox="0 0 24 24"><path d="M20 11a8 8 0 1 1-2.4-5.7L20 7.7M20 3v4.7h-4.7"/></svg>Reset scenario</button><button class="primary-button" id="runButton"><svg viewBox="0 0 24 24"><path d="m8 5 11 7-11 7V5Z"/></svg><span>Run evidence audit</span></button></div></div>
+          <nav class="tabs" aria-label="Report sections"><button class="active" data-tab="overview">Overview</button><button data-tab="evidence">Evidence <span id="evidenceTabCount">5</span></button><button data-tab="claims">Claims <span>2</span></button><button data-tab="trail">Audit trail</button></nav>
+          <div class="tab-panel active" data-tab-panel="overview"><div class="report-summary-grid"><article class="summary-card"><small>Report due</small><strong>Oct 15, 2026</strong><p>31 days remaining</p></article><article class="summary-card"><small>Evidence coverage</small><strong id="coverageMetric">0 of 3</strong><div class="progress"><span id="coverageBar" style="width:0%"></span></div></article><article class="summary-card"><small>Evidence files</small><strong id="evidenceMetric">5</strong><p>2 financial · 3 program</p></article><article class="summary-card"><small>Report integrity</small><strong id="statusTitle">Ready to audit</strong><p id="integritySubtext">No checks run yet</p></article></div><div class="report-workspace-grid"><article class="surface audit-workspace"><div class="surface-head"><div><h2>Evidence audit</h2><p>Claims are verified against award terms and source evidence</p></div><span class="mode-pill"><i></i><b id="agentMode">Deterministic twin</b></span></div><div class="audit-empty" id="emptyState"><span class="audit-illustration"><svg viewBox="0 0 64 64"><path d="M17 7h25l8 8v42H17V7Zm24 1v9h8M24 28h19M24 36h15M24 44h12"/><circle cx="17" cy="47" r="10"/><path d="m24 54 7 7"/></svg></span><h3>Ready for an evidence audit</h3><p>Proofline will interpret the award terms, reconcile both report claims, detect gaps, and pause only where human authority is required.</p><button class="primary-button inline" data-run-audit>Run evidence audit</button></div><div class="findings-area hidden" id="findingsArea"><div class="finding-heading"><div><span class="finding-dot"></span><div><h3 id="findingsLabel">Blocking findings</h3><p id="findingSubtitle">The report cannot be defended as written.</p></div></div><span id="findingCount">0</span></div><div id="findingsList"></div></div></article><aside class="surface report-side"><div class="side-section"><div class="surface-head small"><div><h2>Report owner</h2></div><button class="icon-only"><svg viewBox="0 0 24 24"><path d="m9 18 6-6-6-6"/></svg></button></div><div class="person-row"><span class="user-avatar">MC</span><div><strong>Maya Chen</strong><small>Grants manager</small></div></div></div><div class="side-section"><h3>Award details</h3><dl class="detail-list"><div><dt>Funder</dt><dd>City Office of Youth Programs</dd></div><div><dt>Award amount</dt><dd>$25,000</dd></div><div><dt>Reporting cadence</dt><dd>Quarterly</dd></div><div><dt>Next period</dt><dd>Oct 1–Dec 31</dd></div></dl></div><div class="side-section"><h3>Source connections</h3><div class="source-row"><span class="source-icon drive">△</span><div><strong>Google Drive</strong><small>4 files synced</small></div><i class="connected-dot"></i></div><div class="source-row"><span class="source-icon qb">qb</span><div><strong>QuickBooks</strong><small>2 transactions matched</small></div><i class="connected-dot"></i></div></div></aside></div></div>
+          <div class="tab-panel" data-tab-panel="evidence"><article class="surface"><div class="surface-head"><div><h2>Evidence manifest</h2><p>Every artifact is hashed and traceable to its source</p></div><button class="primary-button small-button" data-open-upload><svg viewBox="0 0 24 24"><path d="M12 16V4m0 0L7 9m5-5 5 5M5 20h14"/></svg>Upload evidence</button></div><div class="data-table-wrap"><table class="data-table"><thead><tr><th>Artifact</th><th>Type</th><th>Reported value</th><th>Captured</th><th>Status</th></tr></thead><tbody id="evidenceTable"></tbody></table></div></article></div>
+          <div class="tab-panel" data-tab-panel="claims"><article class="surface"><div class="surface-head"><div><h2>Reported claims</h2><p>Values entered by the reporting team and their evidence links</p></div><button class="secondary-button" id="editClaimsButton"><svg viewBox="0 0 24 24"><path d="m4 20 4-.8L19 8.3 15.7 5 4.8 15.9 4 20Z"/></svg>Edit claims</button></div><div class="claims-grid" id="claimsGrid"></div></article></div>
+          <div class="tab-panel" data-tab-panel="trail"><article class="surface"><div class="surface-head"><div><h2>Audit trail</h2><p>Append-only record of agent tools, policy checks, and human decisions</p></div><span class="period-chip">Tamper-evident</span></div><div class="trail-empty" id="trailEmpty">The audit trail will begin when Proofline inspects this report.</div><ol class="event-trail" id="eventTrail"></ol></article></div>
+        </section>
+
+        <section class="page" id="page-evidence" data-page="evidence"><div class="page-heading"><div><p class="eyebrow">Source of truth</p><h1>Evidence library</h1><p>Search, upload, and trace every artifact across awards and reports.</p></div><button class="primary-button" data-open-upload><svg viewBox="0 0 24 24"><path d="M12 16V4m0 0L7 9m5-5 5 5M5 20h14"/></svg>Upload evidence</button></div><div class="metric-grid compact"><article class="metric-card"><div><small>Total artifacts</small><strong id="artifactMetric">147</strong><p>Across 8 awards</p></div></article><article class="metric-card"><div><small>Matched</small><strong>131</strong><p>89% of all evidence</p></div></article><article class="metric-card"><div><small>Needs review</small><strong>6</strong><p>Possible duplicate or invalid date</p></div></article><article class="metric-card"><div><small>Storage</small><strong>284 MB</strong><p>Encrypted at rest</p></div></article></div><article class="surface"><div class="list-toolbar"><div class="segmented"><button class="active">All files</button><button>Financial</button><button>Program</button><button>Needs review</button></div><button class="secondary-button"><svg viewBox="0 0 24 24"><path d="M4 6h16M7 12h10m-7 6h4"/></svg>Filter</button></div><div class="data-table-wrap"><table class="data-table"><thead><tr><th>File</th><th>Linked report</th><th>Source</th><th>Captured</th><th>Integrity</th></tr></thead><tbody id="libraryTable"></tbody></table></div></article></section>
+
+        <section class="page" id="page-decisions" data-page="decisions"><div class="page-heading"><div><p class="eyebrow">Human authority</p><h1>Decisions</h1><p>Review only the exceptions the evidence agent cannot resolve safely.</p></div></div><div class="decision-layout"><article class="surface decision-queue"><div class="surface-head"><div><h2>Needs your decision</h2><p>1 open · oldest first</p></div></div><button class="queue-item active" data-open-current-report><span class="queue-icon">!</span><span><strong>Correct unsupported report claims</strong><small>Community Youth Access Grant · due Oct 15</small></span><i>3 findings</i></button><div class="queue-empty"><svg viewBox="0 0 24 24"><path d="m5 12 4 4L19 6"/></svg><p>Everything else is moving safely.</p></div></article><article class="surface decision-detail" id="decisionCard"><div class="decision-kicker"><span></span>Decision required</div><h2 id="decisionTitle">Run the evidence audit to load this decision</h2><p id="decisionSummary">Proofline pauses before changing report claims or excluding evidence.</p><div class="recommendation"><small>Agent recommendation</small><p id="decisionRecommendation">Open the report and run its evidence audit first.</p></div><ul id="decisionConsequences"></ul><div class="decision-actions"><button class="primary-button" id="approveButton" disabled><svg viewBox="0 0 24 24"><path d="m5 12 4 4L19 6"/></svg><span id="approveLabel">Approve correction</span></button><button class="secondary-button" id="keepBlockedButton" disabled>Keep report blocked</button></div><p class="authority-note"><svg viewBox="0 0 24 24"><path d="M7 11V8a5 5 0 0 1 10 0v3M5 11h14v10H5V11Z"/></svg>The agent cannot approve its own correction. Your action is recorded.</p></article></div></section>
+
+        <section class="page" id="page-analytics" data-page="analytics"><div class="page-heading"><div><p class="eyebrow">Portfolio intelligence</p><h1>Analytics</h1><p>See evidence readiness, recurring risks, and reporting effort over time.</p></div><button class="secondary-button"><svg viewBox="0 0 24 24"><path d="M12 3v12m0 0 5-5m-5 5-5-5M5 21h14"/></svg>Export</button></div><div class="metric-grid"><article class="metric-card"><div><small>Reports verified</small><strong>21</strong><p><span class="positive">↑ 24%</span> year over year</p></div></article><article class="metric-card"><div><small>Hours returned</small><strong>186</strong><p>Estimated staff time</p></div></article><article class="metric-card"><div><small>Issues caught</small><strong>43</strong><p>Before human submission</p></div></article><article class="metric-card"><div><small>First-pass rate</small><strong>71%</strong><p><span class="positive">↑ 8%</span> since Q1</p></div></article></div><div class="analytics-grid"><article class="surface"><div class="surface-head"><div><h2>Evidence readiness</h2><p>Six-month portfolio trend</p></div><span class="period-chip">Mar–Sep 2026</span></div><div class="line-chart"><div class="gridlines"><i></i><i></i><i></i><i></i></div><svg viewBox="0 0 700 220" preserveAspectRatio="none"><defs><linearGradient id="area" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#375F55" stop-opacity=".24"/><stop offset="1" stop-color="#375F55" stop-opacity="0"/></linearGradient></defs><path class="area" d="M0 174 C80 155 92 166 145 139 S230 118 280 124 360 98 420 105 510 65 560 78 645 37 700 43 V220 H0Z"/><path class="line" d="M0 174 C80 155 92 166 145 139 S230 118 280 124 360 98 420 105 510 65 560 78 645 37 700 43"/></svg><div class="month-labels"><span>Mar</span><span>Apr</span><span>May</span><span>Jun</span><span>Jul</span><span>Aug</span><span>Sep</span></div></div></article><article class="surface"><div class="surface-head"><div><h2>Issues prevented</h2><p>By category</p></div></div><div class="issue-bars"><div><p><span>Missing evidence</span><b>18</b></p><i><span style="width:86%"></span></i></div><div><p><span>Outside reporting period</span><b>11</b></p><i><span style="width:58%"></span></i></div><div><p><span>Duplicate evidence</span><b>9</b></p><i><span style="width:47%"></span></i></div><div><p><span>Total mismatch</span><b>5</b></p><i><span style="width:28%"></span></i></div></div></article></div></section>
+
+        <section class="page" id="page-integrations" data-page="integrations"><div class="page-heading"><div><p class="eyebrow">Admin</p><h1>Integrations</h1><p>Bring financial, program, and document evidence into one controlled workspace.</p></div><button class="secondary-button">View sync log</button></div><div class="integration-grid"><article class="integration-card"><span class="integration-logo drive">△</span><div><h2>Google Drive</h2><p>Sync award terms, receipts, invoices, and attendance exports.</p></div><span class="connected-chip"><i></i>Connected</span><button class="secondary-button manage-integration">Manage</button></article><article class="integration-card"><span class="integration-logo qb">qb</span><div><h2>QuickBooks Online</h2><p>Match report expenses to categorized ledger transactions.</p></div><span class="connected-chip"><i></i>Connected</span><button class="secondary-button manage-integration">Manage</button></article><article class="integration-card"><span class="integration-logo sf">☁</span><div><h2>Salesforce</h2><p>Connect program outcomes and de-identified participant metrics.</p></div><span class="available-chip">Available</span><button class="secondary-button connect-integration">Connect</button></article><article class="integration-card"><span class="integration-logo email">@</span><div><h2>Evidence inbox</h2><p>Forward supporting files to a unique organization address.</p></div><span class="connected-chip"><i></i>Active</span><button class="secondary-button manage-integration">Manage</button></article></div></section>
+
+        <section class="page" id="page-settings" data-page="settings"><div class="page-heading"><div><p class="eyebrow">Admin</p><h1>Policies & settings</h1><p>Define the evidence rules and authority boundaries applied across reports.</p></div><button class="primary-button" id="saveSettings">Save changes</button></div><div class="settings-layout"><nav class="settings-nav"><button class="active">Evidence policy</button><button>Team & roles</button><button>Organization</button><button>Notifications</button><button>Data retention</button></nav><article class="surface settings-panel"><h2>Evidence policy</h2><p class="settings-intro">These controls apply deterministic gates after agent reasoning and before a report can be marked verified.</p><div class="setting-row"><div><strong>Block unsupported material claims</strong><p>Require at least one valid evidence source for every reported financial or outcome value.</p></div><label class="switch"><input type="checkbox" checked><span></span></label></div><div class="setting-row"><div><strong>Reject duplicate artifacts</strong><p>Compare SHA-256 hashes across the report and exclude exact duplicate files.</p></div><label class="switch"><input type="checkbox" checked><span></span></label></div><div class="setting-row"><div><strong>Enforce reporting period</strong><p>Exclude transactions and evidence captured outside the award’s reporting window.</p></div><label class="switch"><input type="checkbox" checked><span></span></label></div><div class="setting-row"><div><strong>Require human approval for corrections</strong><p>Agents may recommend changes but cannot alter material claims without an authorized reviewer.</p></div><label class="switch"><input type="checkbox" checked disabled><span></span></label><em>Required</em></div><div class="setting-field"><label>Materiality threshold</label><div class="input-prefix"><span>$</span><input type="number" value="100"></div><small>Differences below this amount remain visible but do not block the report.</small></div></article></div></section>
+      </main>
     </div>
-    <button class="icon-button" id="resetButton" title="Reset demo" aria-label="Reset demo">
-      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 11a8.1 8.1 0 1 1-2.4-5.7L20 7.7M20 3v4.7h-4.7"/></svg>
-    </button>
-  </header>
+  </div>
 
-  <main>
-    <section class="hero">
-      <div class="eyebrow"><span>Quarterly reporting</span><span class="slash">/</span><span>CYA-2026-017</span></div>
-      <div class="hero-grid">
-        <div>
-          <h1>Every claim needs<br><em>a line of proof.</em></h1>
-          <p class="lede">Proofline quietly reconciles grant terms, expenses, and program evidence—then asks for one decision only when the report cannot be defended as written.</p>
-        </div>
-        <div class="hero-action">
-          <div class="due-label">REPORT DUE</div>
-          <div class="due-date">15 Oct <span>2026</span></div>
-          <div class="due-context">Community Youth Access Grant<br>Jul 01–Sep 30 reporting period</div>
-          <button class="primary-button" id="runButton">
-            <span>Run evidence audit</span>
-            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg>
-          </button>
-        </div>
-      </div>
-    </section>
-
-    <section class="proof-strip" aria-label="Audit summary">
-      <div class="proof-status" id="proofStatus" data-status="ready">
-        <div class="status-orb"><span></span></div>
-        <div><small>REPORT INTEGRITY</small><strong id="statusTitle">Ready to audit</strong></div>
-      </div>
-      <div class="metric"><small>Unsupported claims</small><strong id="blockerMetric">—</strong></div>
-      <div class="metric"><small>Evidence files</small><strong id="evidenceMetric">5</strong></div>
-      <div class="metric"><small>Requirements covered</small><strong id="coverageMetric">0 / 3</strong></div>
-      <div class="metric last"><small>External submission</small><strong class="never">Human only</strong></div>
-    </section>
-
-    <section class="workspace">
-      <div class="workspace-head">
-        <div>
-          <span class="section-number">01</span>
-          <h2>Integrity review</h2>
-        </div>
-        <div class="mode-pill"><span>STRANDS</span><b id="agentMode">DETERMINISTIC TWIN</b></div>
-      </div>
-
-      <div class="empty-state" id="emptyState">
-        <div class="scan-illustration" aria-hidden="true">
-          <div class="doc doc-back"></div><div class="doc doc-front"><i></i><i></i><i></i></div><div class="scan-line"></div>
-        </div>
-        <h3>Five files are waiting in the evidence inbox.</h3>
-        <p>The agent will map award obligations, hash every artifact, reconcile report claims, and remain silent unless a material decision is required.</p>
-      </div>
-
-      <div class="review-layout hidden" id="reviewLayout">
-        <div class="findings-panel">
-          <div class="panel-label"><span id="findingsLabel">Blocking findings</span><span id="findingCount">0</span></div>
-          <div id="findingsList"></div>
-        </div>
-        <aside class="decision-card hidden" id="decisionCard">
-          <div class="decision-kicker"><span></span> ONE DECISION NEEDED</div>
-          <h3 id="decisionTitle"></h3>
-          <p id="decisionSummary"></p>
-          <div class="recommendation">
-            <small>AGENT RECOMMENDATION</small>
-            <p id="decisionRecommendation"></p>
-          </div>
-          <ul id="decisionConsequences"></ul>
-          <button class="approve-button" id="approveButton">
-            <span id="approveLabel">Approve & re-verify</span>
-            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m5 12 4 4L19 6"/></svg>
-          </button>
-          <button class="text-button" id="keepBlockedButton">Keep report blocked</button>
-          <p class="authority-note">The agent cannot approve its own correction.</p>
-        </aside>
-        <aside class="verified-card hidden" id="verifiedCard">
-          <div class="verified-seal">
-            <svg viewBox="0 0 52 52" aria-hidden="true"><circle cx="26" cy="26" r="23"/><path d="m15 27 7 7 15-17"/></svg>
-          </div>
-          <div class="decision-kicker green">INDEPENDENTLY VERIFIED</div>
-          <h3>Zero unsupported material claims.</h3>
-          <p>Every reported figure is now traceable to included evidence. Original exclusions remain visible in the audit trail.</p>
-          <dl>
-            <div><dt>Eligible expenses</dt><dd>$480.00</dd></div>
-            <div><dt>Unique youth</dt><dd>92</dd></div>
-            <div><dt>Requirements</dt><dd>3 / 3</dd></div>
-          </dl>
-          <a class="download-button" id="downloadPacket" href="/api/reports/CYA-2026-017/packet" target="_blank" rel="noopener">
-            <span>Open verified packet</span>
-            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v12m0 0 5-5m-5 5-5-5M5 21h14"/></svg>
-          </a>
-          <p class="authority-note">Ready for authorized human review. Not submitted.</p>
-        </aside>
-      </div>
-    </section>
-
-    <section class="details-grid">
-      <div class="detail-card evidence-card">
-        <div class="card-head"><div><span class="section-number">02</span><h2>Evidence manifest</h2></div><span id="manifestCount">5 artifacts</span></div>
-        <div class="table-wrap">
-          <table>
-            <thead><tr><th>Artifact</th><th>Type</th><th>Reported value</th><th>Date</th><th>Status</th></tr></thead>
-            <tbody id="evidenceTable"></tbody>
-          </table>
-        </div>
-      </div>
-
-      <div class="detail-card trail-card">
-        <div class="card-head"><div><span class="section-number">03</span><h2>Agent trail</h2></div><span>Append-only</span></div>
-        <div class="trail-empty" id="trailEmpty">The tool trail will appear when the audit begins.</div>
-        <ol class="trail" id="eventTrail"></ol>
-      </div>
-    </section>
-
-    <section class="trust-boundary">
-      <span class="section-number">04</span>
-      <div><h2>Reasoning proposes.<br>Evidence decides.</h2></div>
-      <div class="boundary-copy">
-        <p>Strands interprets the award and orchestrates the investigation. Deterministic checks own hashes, dates, arithmetic, claim coverage, and the final verification gate.</p>
-        <div class="boundary-tags"><span>Model</span><i>→</i><span>Tools</span><i>→</i><span>Policy gate</span><i>→</i><span>Human authority</span></div>
-      </div>
-    </section>
-  </main>
-
+  <div class="modal-backdrop hidden" id="intakeModal"><section class="modal intake-modal" role="dialog" aria-modal="true" aria-labelledby="intakeTitle"><header><div><span class="step-kicker" id="stepKicker">Step 1 of 3</span><h2 id="intakeTitle">Create a reporting workspace</h2></div><button class="modal-close" data-close-modal aria-label="Close"><svg viewBox="0 0 24 24"><path d="m6 6 12 12M18 6 6 18"/></svg></button></header><div class="stepper"><i class="active"></i><i></i><i></i></div><form id="intakeForm"><div class="form-step active" data-step="1"><p class="form-intro">Start from an existing award. Proofline will pull its reporting terms and required evidence.</p><label>Which award are you reporting on?<select id="intakeAward" required><option value="">Select an award</option><option>Neighborhood Arts Recovery Fund</option><option>Community Food Security Initiative</option><option>Digital Skills Access Fund</option></select></label><div class="two-fields"><label>Reporting period starts<input type="date" id="intakeStart" value="2026-07-01" required></label><label>Reporting period ends<input type="date" id="intakeEnd" value="2026-09-30" required></label></div><label>Report due date<input type="date" id="intakeDue" value="2026-10-31" required></label></div><div class="form-step" data-step="2"><p class="form-intro">Enter the material claims you expect to include. They remain drafts until the evidence audit passes.</p><label>Eligible expenses claimed<div class="input-prefix"><span>$</span><input type="number" id="intakeExpenses" min="0" step="0.01" placeholder="0.00" required></div></label><label>People served<input type="number" id="intakePeople" min="0" placeholder="0" required></label><label>Outcome summary<textarea id="intakeNarrative" rows="4" placeholder="Describe the outcome this report will claim…"></textarea></label></div><div class="form-step" data-step="3"><p class="form-intro">Add source evidence now, or create the workspace and connect files later.</p><label class="dropzone" for="intakeFiles"><svg viewBox="0 0 24 24"><path d="M12 16V4m0 0L7 9m5-5 5 5M5 20h14"/></svg><strong>Drop evidence here or browse</strong><span>PDF, CSV, XLSX, DOCX, JPG, or PNG · up to 25 MB each</span><input type="file" id="intakeFiles" multiple accept=".pdf,.csv,.xlsx,.docx,.jpg,.jpeg,.png,.txt"></label><div class="selected-files" id="intakeFileList"><span>No files selected yet</span></div></div></form><footer><button class="text-button hidden" id="intakeBack">Back</button><div></div><button class="secondary-button" data-close-modal>Cancel</button><button class="primary-button inline" id="intakeNext">Continue</button></footer></section></div>
+  <div class="modal-backdrop hidden" id="uploadModal"><section class="modal upload-modal" role="dialog" aria-modal="true" aria-labelledby="uploadTitle"><header><div><span class="step-kicker">Evidence library</span><h2 id="uploadTitle">Upload evidence</h2></div><button class="modal-close" data-close-modal aria-label="Close"><svg viewBox="0 0 24 24"><path d="m6 6 12 12M18 6 6 18"/></svg></button></header><div class="modal-body"><label>Link to report<select id="uploadReport"><option>Community Youth Access Grant · Q3 2026</option><option>Digital Skills Access Fund · Q3 2026</option><option>Community Food Security Initiative · Q3 2026</option></select></label><label class="dropzone" for="uploadFiles"><svg viewBox="0 0 24 24"><path d="M12 16V4m0 0L7 9m5-5 5 5M5 20h14"/></svg><strong>Drop files here or browse</strong><span>Files are hashed on upload and retain their original source metadata.</span><input type="file" id="uploadFiles" multiple></label><div class="selected-files" id="uploadFileList"><span>No files selected yet</span></div></div><footer><div></div><button class="secondary-button" data-close-modal>Cancel</button><button class="primary-button inline" id="uploadSubmit">Upload files</button></footer></section></div>
+  <div class="modal-backdrop hidden" id="editClaimsModal"><section class="modal upload-modal" role="dialog" aria-modal="true" aria-labelledby="claimsTitle"><header><div><span class="step-kicker">Report claims</span><h2 id="claimsTitle">Edit draft claims</h2></div><button class="modal-close" data-close-modal aria-label="Close"><svg viewBox="0 0 24 24"><path d="m6 6 12 12M18 6 6 18"/></svg></button></header><div class="modal-body"><label>Eligible program expenses<div class="input-prefix"><span>$</span><input id="claimExpensesInput" type="number" value="1310"></div></label><label>Unique youth served<input id="claimYouthInput" type="number" value="92"></label><p class="inline-notice">Changes are saved as draft values. The audit will test them against evidence before verification.</p></div><footer><div></div><button class="secondary-button" data-close-modal>Cancel</button><button class="primary-button inline" id="saveClaimsButton">Save draft claims</button></footer></section></div>
   <div class="toast" id="toast" role="status" aria-live="polite"></div>
-  <script src="/static/app.js?v=2"></script>
+  <script src="/static/app.js?v=3"></script>
 </body>
 </html>

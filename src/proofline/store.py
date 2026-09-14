@@ -210,5 +210,38 @@ class GrantStore:
         self.decision.status = "approved"
         return 3
 
+    def update_claims(self, eligible_expenses: float, people_served: int) -> None:
+        """Persist user-entered draft claims before an audit starts."""
+        if self.status != AuditStatus.READY:
+            raise ValueError("Reset this report before editing claims after an audit")
+        self.claims["CLM-01"].claimed_value = eligible_expenses
+        self.claims["CLM-02"].claimed_value = people_served
+
+    def add_uploaded_evidence(
+        self, filename: str, kind: str, captured_on: str, digest: str, size_bytes: int
+    ) -> Evidence:
+        """Register browser-uploaded evidence with its client-computed content hash."""
+        if self.status != AuditStatus.READY:
+            raise ValueError("Reset this report before adding evidence after an audit")
+        # Keep manual-upload IDs in a separate range from source-system evidence
+        # (including the reserved E-303 September attendance artifact).
+        numeric_ids = [
+            int(key.split("-")[-1])
+            for key in self.evidence
+            if key.startswith("E-") and int(key.split("-")[-1]) >= 900
+        ]
+        evidence_id = f"E-{max(numeric_ids, default=899) + 1}"
+        item = Evidence(
+            id=evidence_id,
+            filename=filename,
+            kind=kind,
+            captured_on=captured_on,
+            source_ref=f"Manual upload · {filename}",
+            sha256=digest,
+            note=f"Uploaded by reporting team ({size_bytes} bytes).",
+        )
+        self.evidence[item.id] = item
+        return item
+
 
 store = GrantStore()

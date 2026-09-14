@@ -12,7 +12,16 @@ from fastapi.staticfiles import StaticFiles
 from mangum import Mangum
 
 from .agentcore_client import run_agentcore_audit
-from .models import AuditRun, AuditStatus, DashboardState, ResolutionRun, ResolveRequest
+from .models import (
+    AuditRun,
+    AuditStatus,
+    DashboardState,
+    Evidence,
+    EvidenceUploadRequest,
+    ResolutionRun,
+    ResolveRequest,
+    UpdateClaimsRequest,
+)
 from .packet import render_packet
 from .store import GrantStore, store
 from .strands_agent import describe_agent, run_strands_audit
@@ -140,6 +149,43 @@ def resolve(
         raise HTTPException(status_code=404, detail="Award not found")
     try:
         return DeterministicWorkflow(grant_store).resolve(request.decision_id, request.approve)
+    except ValueError as error:
+        raise HTTPException(status_code=409, detail=str(error)) from error
+
+
+@app.patch("/api/reports/{award_id}/claims", response_model=DashboardState)
+def update_claims(
+    award_id: str,
+    request: UpdateClaimsRequest,
+    session_id: Annotated[str | None, Header(alias="X-Proofline-Session")] = None,
+) -> DashboardState:
+    grant_store = _store_for(session_id)
+    if award_id != grant_store.award.id:
+        raise HTTPException(status_code=404, detail="Award not found")
+    try:
+        grant_store.update_claims(request.eligible_expenses, request.people_served)
+    except ValueError as error:
+        raise HTTPException(status_code=409, detail=str(error)) from error
+    return dashboard_state(grant_store)
+
+
+@app.post("/api/reports/{award_id}/evidence", response_model=Evidence)
+def upload_evidence(
+    award_id: str,
+    request: EvidenceUploadRequest,
+    session_id: Annotated[str | None, Header(alias="X-Proofline-Session")] = None,
+) -> Evidence:
+    grant_store = _store_for(session_id)
+    if award_id != grant_store.award.id:
+        raise HTTPException(status_code=404, detail="Award not found")
+    try:
+        return grant_store.add_uploaded_evidence(
+            request.filename,
+            request.kind,
+            request.captured_on.isoformat(),
+            request.sha256,
+            request.size_bytes,
+        )
     except ValueError as error:
         raise HTTPException(status_code=409, detail=str(error)) from error
 
