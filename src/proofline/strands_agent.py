@@ -140,7 +140,7 @@ class GrantAuditTools:
 
 def run_strands_audit(grant_store: GrantStore) -> AuditRun:
     model = BedrockModel(
-        model_id=os.getenv("BEDROCK_MODEL_ID", "amazon.nova-lite-v1:0"),
+        model_id=os.getenv("BEDROCK_MODEL_ID", "us.amazon.nova-lite-v1:0"),
         region_name=os.getenv("AWS_REGION", "us-west-2"),
     )
     grant_store.agent_mode = "strands"
@@ -165,7 +165,7 @@ def run_strands_audit(grant_store: GrantStore) -> AuditRun:
 def describe_agent() -> dict[str, object]:
     return {
         "framework": "Strands Agents SDK",
-        "model": os.getenv("BEDROCK_MODEL_ID", "amazon.nova-lite-v1:0"),
+        "model": os.getenv("BEDROCK_MODEL_ID", "us.amazon.nova-lite-v1:0"),
         "region": os.getenv("AWS_REGION", "us-west-2"),
         "tools": 5,
         "authority_boundary": "deterministic integrity verifier",

@@ -19,8 +19,8 @@
       "networkMode": "PUBLIC",
       "protocol": "HTTP",
       "environmentVariables": {
-        "AWS_REGION": "us-west-2",
-        "BEDROCK_MODEL_ID": "amazon.nova-lite-v1:0"
+        "AWS_REGION": "us-west-1",
+        "BEDROCK_MODEL_ID": "us.amazon.nova-lite-v1:0"
       }
     }
   ],

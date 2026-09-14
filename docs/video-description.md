@@ -12,7 +12,7 @@ cannot approve its own correction and has no external-submission tool.
 All organization, award, financial, and participant data shown are synthetic. The files are real
 repository fixtures whose hashes, dates, totals, and unique IDs are computed at runtime.
 
-- Live demo: **ADD DEPLOYED URL**
+- Live demo: https://ckmt39zrrm.us-west-2.awsapprunner.com/
 - MIT-licensed source: https://github.com/vj68/proofline
 - Architecture: https://github.com/vj68/proofline/blob/main/docs/architecture.md
 - Agents for Humans Hackathon: https://agentsforhumans.devpost.com/

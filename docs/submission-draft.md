@@ -52,6 +52,10 @@ twin for repeatable judge demos and automated evaluation. All fixture hashes are
 real repository files at runtime. The packet renderer fails closed unless the current state has
 passed a fresh verification.
 
+The public console is deployed on AWS App Runner from a scan-on-push Amazon ECR image. The Strands
+entry point is separately deployed to Amazon Bedrock AgentCore Runtime, keeping the managed agent
+execution surface distinct from the human authorization surface.
+
 ## What we are proud of
 
 - One coherent end-to-end workflow rather than a feature montage.
@@ -87,6 +91,8 @@ financial records, or confidential grant documents are used.
 
 ## Evidence links
 
+- [Live Proofline demo](https://ckmt39zrrm.us-west-2.awsapprunner.com/)
+- [MIT-licensed source](https://github.com/vj68/proofline)
 - [GAO: Nonprofit Sector—Treatment and Reimbursement of Indirect Costs Vary among Grants](https://www.gao.gov/products/gao-10-477)
 - [GAO: Grants Management—Observations on Challenges with Access, Use, and Oversight](https://www.gao.gov/products/gao-23-106797)
 - [Grants.gov: Post-Award Phase](https://www.grants.gov/learn-grants/grants-101/post-award-phase)

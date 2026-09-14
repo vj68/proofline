@@ -15,7 +15,7 @@ Requirements: Node.js 20+, AWS CDK, AgentCore CLI, and an authenticated AWS CLI 
 ```bash
 export PATH="/opt/homebrew/opt/node/bin:$PATH"
 export AWS_PROFILE=your-profile
-export AWS_REGION=us-west-2
+export AWS_REGION=us-west-1
 
 agentcore validate -d .
 agentcore package -d . -r ProoflineAgent
@@ -38,6 +38,7 @@ To make App Runner use the AgentCore runtime:
 ```bash
 export AWS_PROFILE=your-profile
 export AWS_REGION=us-west-2
+export AGENTCORE_REGION=us-west-1
 export PROOFLINE_AGENT_MODE=agentcore
 export AGENTCORE_RUNTIME_ARN=arn:aws:bedrock-agentcore:REGION:ACCOUNT:runtime/NAME
 ./deployment/deploy-apprunner.sh

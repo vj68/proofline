@@ -4,6 +4,7 @@ set -euo pipefail
 : "${AWS_PROFILE:?Set AWS_PROFILE to the profile that owns the deployment.}"
 
 deployment_region="${AWS_REGION:-us-west-2}"
+agentcore_region="${AGENTCORE_REGION:-$deployment_region}"
 service_name="proofline"
 repository_name="proofline"
 access_role_name="ProoflineAppRunnerECRAccess"
@@ -53,9 +54,9 @@ if ! aws iam get-role --profile "$AWS_PROFILE" --role-name "$instance_role_name"
     --assume-role-policy-document "$instance_trust" >/dev/null
 fi
 
-runtime_resource="arn:aws:bedrock-agentcore:${deployment_region}:${account_id}:runtime/*"
+runtime_resource="arn:aws:bedrock-agentcore:${agentcore_region}:${account_id}:runtime/*"
 instance_policy="$(jq -cn \
-  --arg model "arn:aws:bedrock:${deployment_region}::foundation-model/amazon.nova-lite-v1:0" \
+  --arg model "arn:aws:bedrock:*::foundation-model/amazon.nova-lite-v1:0" \
   --arg profile "arn:aws:bedrock:${deployment_region}:${account_id}:inference-profile/*" \
   --arg runtime "$runtime_resource" \
   '{Version:"2012-10-17",Statement:[
@@ -74,25 +75,27 @@ instance_role_arn="arn:aws:iam::${account_id}:role/${instance_role_name}"
 runtime_variables="$(jq -cn \
   --arg mode "$deployment_mode" \
   --arg region "$deployment_region" \
-  --arg model "amazon.nova-lite-v1:0" \
-  '[
-    {Name:"PROOFLINE_AGENT_MODE",Value:$mode},
-    {Name:"AWS_REGION",Value:$region},
-    {Name:"BEDROCK_MODEL_ID",Value:$model}
-  ]')"
+  --arg model "us.amazon.nova-lite-v1:0" \
+  '{
+    PROOFLINE_AGENT_MODE:$mode,
+    AWS_REGION:$region,
+    BEDROCK_MODEL_ID:$model
+  }')"
 if [[ "$deployment_mode" == "agentcore" ]]; then
   : "${AGENTCORE_RUNTIME_ARN:?Set AGENTCORE_RUNTIME_ARN when deploying in agentcore mode.}"
   runtime_variables="$(jq -cn \
     --arg mode "$deployment_mode" \
     --arg region "$deployment_region" \
-    --arg model "amazon.nova-lite-v1:0" \
+    --arg model "us.amazon.nova-lite-v1:0" \
+    --arg agentcore_region "$agentcore_region" \
     --arg arn "$AGENTCORE_RUNTIME_ARN" \
-    '[
-      {Name:"PROOFLINE_AGENT_MODE",Value:$mode},
-      {Name:"AWS_REGION",Value:$region},
-      {Name:"BEDROCK_MODEL_ID",Value:$model},
-      {Name:"AGENTCORE_RUNTIME_ARN",Value:$arn}
-    ]')"
+    '{
+      PROOFLINE_AGENT_MODE:$mode,
+      AWS_REGION:$region,
+      AGENTCORE_REGION:$agentcore_region,
+      BEDROCK_MODEL_ID:$model,
+      AGENTCORE_RUNTIME_ARN:$arn
+    }')"
 fi
 
 source_configuration="$(jq -cn \

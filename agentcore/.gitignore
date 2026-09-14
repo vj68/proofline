@@ -5,4 +5,3 @@ cdk/node_modules/
 .cache/*
 *.zip
 ProoflineAgent/
-!.cli/deployed-state.json

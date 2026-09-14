@@ -1,8 +1,16 @@
 from __future__ import annotations
 
+import sys
+from pathlib import Path
 from typing import Any
 
 from bedrock_agentcore.runtime import BedrockAgentCoreApp
+
+# AgentCore CodeZip launches this file from the archive root without installing
+# the project as a wheel. Make the repository's src layout importable there.
+src_root = Path(__file__).resolve().parents[1]
+if str(src_root) not in sys.path:
+    sys.path.insert(0, str(src_root))
 
 from proofline.store import GrantStore
 from proofline.strands_agent import describe_agent, run_strands_audit

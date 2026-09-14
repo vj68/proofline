@@ -60,13 +60,18 @@ sequenceDiagram
 
 ## AWS path
 
-The application is designed for a small, reviewable AWS footprint:
+The deployed demonstration uses a small, reviewable AWS footprint:
 
-- Amazon Bedrock provides model inference.
-- Amazon Bedrock AgentCore is the target managed runtime for the Strands agent.
+- AWS App Runner in `us-west-2` hosts the public, session-isolated judge console.
+- Amazon ECR in `us-west-2` stores the scan-on-push application image.
+- Amazon Bedrock AgentCore in `us-west-1` hosts the managed Strands runtime.
+- Amazon Bedrock provides Nova Lite through the US cross-region inference profile.
+
+A production rollout can add event-driven intake and durable state without widening the model's
+authority:
+
 - Amazon S3 is the production evidence-arrival boundary.
 - Amazon EventBridge can schedule deadline checks or react to normalized intake events.
 - Amazon DynamoDB can persist report state and idempotency keys.
-- AWS App Runner or Lambda can host the judge-facing web console.
 
 Only services actually deployed and evidenced should be claimed in the final submission.

@@ -2,6 +2,8 @@
 
 **Every grant-report claim, traced before submission.**
 
+**[Open the live Proofline demo](https://ckmt39zrrm.us-west-2.awsapprunner.com/)**
+
 ![Proofline connects grant-report claims to source evidence before human submission](docs/assets/proofline-cover.png)
 
 Proofline is a background grant-report integrity agent for small nonprofits. It maps award
@@ -101,7 +103,7 @@ and automated tests. To run the same audit through a live Strands agent backed b
 export PROOFLINE_AGENT_MODE=strands
 export AWS_PROFILE=your-profile
 export AWS_REGION=us-west-2
-export BEDROCK_MODEL_ID=amazon.nova-lite-v1:0
+export BEDROCK_MODEL_ID=us.amazon.nova-lite-v1:0
 uv run uvicorn proofline.main:app --reload
 ```
 
@@ -110,6 +112,7 @@ After deploying the included AgentCore runtime, the console can call the managed
 ```bash
 export PROOFLINE_AGENT_MODE=agentcore
 export AGENTCORE_RUNTIME_ARN=arn:aws:bedrock-agentcore:REGION:ACCOUNT:runtime/NAME
+export AGENTCORE_REGION=us-west-1  # when the runtime is in a different region
 uv run uvicorn proofline.main:app --reload
 ```
 
@@ -176,6 +179,7 @@ the web console remains the human authorization surface.
 ```bash
 export PATH="/opt/homebrew/opt/node/bin:$PATH"  # only if Homebrew Node is not already first
 export AWS_PROFILE=your-profile
+export AWS_REGION=us-west-1
 agentcore validate -d .
 agentcore package -d . -r ProoflineAgent
 agentcore deploy -y

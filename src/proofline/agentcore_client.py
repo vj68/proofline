@@ -32,7 +32,8 @@ def run_agentcore_audit(grant_store: GrantStore) -> AuditRun:
         raise RuntimeError("AGENTCORE_RUNTIME_ARN is required in agentcore mode")
 
     client = boto3.client(
-        "bedrock-agentcore", region_name=os.getenv("AWS_REGION", "us-west-2")
+        "bedrock-agentcore",
+        region_name=os.getenv("AGENTCORE_REGION", os.getenv("AWS_REGION", "us-west-2")),
     )
     response = client.invoke_agent_runtime(
         agentRuntimeArn=runtime_arn,
